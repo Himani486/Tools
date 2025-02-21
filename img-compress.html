@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Compress images easily with our free online image compression tool. Reduce image size without losing quality.">
+  <meta name="keywords" content="image compression, compress images, optimize images, reduce image size">
+  <meta name="author" content="Your Company Name">
+  <title>Image Compression Tool</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5dc; /* Beige */
+      color: #5d4037; /* Brown */
+    }
+
+    header {
+      background-color: #6d4c41; /* Dark Brown */
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+    }
+
+    .tool-interface {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #d7ccc8; /* Light Brown */
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .tool-interface label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .tool-interface input,
+    .tool-interface select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #d7ccc8; /* Light Brown */
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    .tool-interface button {
+      background-color: #6d4c41; /* Dark Brown */
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .tool-interface button:hover {
+      background-color: #5d4037; /* Brown */
+    }
+
+    .result {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .result img {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .ads {
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #6d4c41; /* Dark Brown */
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .tool-interface {
+        margin: 10px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Image Compression Tool</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Ad Unit 1: Above the Tool Interface -->
+    <div class="ads">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_FIRST_ADSENSE_ID" crossorigin="anonymous"></script>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="YOUR_FIRST_ADSENSE_ID"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- Tool Interface -->
+    <section class="tool-interface">
+      <form id="compress-form">
+        <label for="image-upload">Upload Image:</label>
+        <input type="file" id="image-upload" accept="image/*" required>
+
+        <label for="compression-level">Compression Level:</label>
+        <select id="compression-level" required>
+          <option value="low">Low Compression (Best Quality)</option>
+          <option value="medium">Medium Compression (Balanced)</option>
+          <option value="high">High Compression (Smaller Size)</option>
+        </select>
+
+        <button type="submit">Compress Image</button>
+      </form>
+
+      <!-- Result Section -->
+      <div class="result" id="result">
+        <!-- Compressed image and success message will be displayed here -->
+      </div>
+    </section>
+
+    <!-- Ad Unit 2: Below the Tool Interface -->
+    <div class="ads">
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR_SECOND_ADSENSE_ID" crossorigin="anonymous"></script>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="YOUR_SECOND_ADSENSE_ID"
+           data-ad-slot="0987654321"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2023 Image Compression Tool. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Dynamic Functionality -->
+  <script>
+    document.getElementById('compress-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const file = document.getElementById('image-upload').files[0];
+      const compressionLevel = document.getElementById('compression-level').value;
+      const resultDiv = document.getElementById('result');
+
+      if (!file) {
+        resultDiv.innerHTML = '<p style="color: red;">Please upload an image.</p>';
+        return;
+      }
+
+      // Simulate compression (replace with actual backend API call)
+      const reader = new FileReader();
+      reader.onload = function (event) {
+        const img = new Image();
+        img.src = event.target.result;
+
+        img.onload = function () {
+          // Display success message and compressed image
+          resultDiv.innerHTML = `
+            <p style="color: green;">Image compressed successfully at ${compressionLevel} level!</p>
+            <img src="${img.src}" alt="Compressed Image">
+            <p><a href="${img.src}" download="compressed-image.png">Download Compressed Image</a></p>
+          `;
+        };
+      };
+      reader.readAsDataURL(file);
+    });
+  </script>
+</body>
+</html>
